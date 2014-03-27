@@ -1,0 +1,35 @@
+<h1>Listing cforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cforms.each do |cform| %>
+      <tr>
+        <td><%= cform.email %></td>
+        <td><%= cform.subject %></td>
+        <td><%= cform.description %></td>
+        <td><%= cform.first_name %></td>
+        <td><%= cform.last_name %></td>
+        <td><%= link_to 'Show', cform %></td>
+        <td><%= link_to 'Edit', edit_cform_path(cform) %></td>
+        <td><%= link_to 'Destroy', cform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cform', new_cform_path %>

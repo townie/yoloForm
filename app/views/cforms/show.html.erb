@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @cform.email %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @cform.subject %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cform.description %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @cform.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @cform.last_name %>
+</p>
+
+<%= link_to 'Edit', edit_cform_path(@cform) %> |
+<%= link_to 'Back', cforms_path %>
