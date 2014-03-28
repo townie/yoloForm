@@ -16,7 +16,7 @@ class CformsController < ApplicationController
   def show
     @user = current_user
     if @user[:role] == "viewer"
-      redirect_to action: 'new'
+      redirect_to action: 'new', notice: 'Cform was successfully created.'
     end
   end
 
@@ -74,6 +74,8 @@ class CformsController < ApplicationController
     def set_cform
       @cform = Cform.find(params[:id])
     end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cform_params

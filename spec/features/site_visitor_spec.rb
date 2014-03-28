@@ -18,7 +18,6 @@ describe 'site visitor' do
   context 'forms are correct' do
 
     it 'has an email section' do
-      save_and_open_page
       expect(page).to have_css('input#cform_email')
     end
 
@@ -56,11 +55,15 @@ describe 'site visitor' do
       expect(page).to have_content("can't be blank")
     end
 
-    it 'user submits a completed form and is redirected to index' do
+    it 'user submits a completed form and is redirected to new' do
+      fill_in "Email", with: "mofo@gmail.com"
+      fill_in "Subject", with: "gmail.com"
+      fill_in "Description", with: "mofo stuff"
+      fill_in "First name", with: 'mo'
+      fill_in "Last name", with: "fo"
 
-    end
-
-    it 'upon valid sumbisson the information is posted on index page  ' do
+      click_on "Create Form"
+      expect(page).to have_content("Cform was successfully created.")
     end
 
 
