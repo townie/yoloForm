@@ -7,7 +7,14 @@ describe 'site visitor' do
 
   context 'forms are correct' do
     before(:each) do
-      visit('/cforms/new')
+      visit('/')
+      click_on "Sign up"
+      user = (0..10).map {('a'..'z').to_a[rand(5)]}.join
+      fill_in "Email", with: "#{user}@shlomo.com"
+      save_and_open_page
+      fill_in "Password", with: "qwerty"
+      click_on "Sign in"
+      save_and_open_page
     end
 
     it 'has an email section' do

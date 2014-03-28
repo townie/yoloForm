@@ -4,12 +4,20 @@ class CformsController < ApplicationController
   # GET /cforms
   # GET /cforms.json
   def index
+    @user = current_user
+    if @user[:role] == "viewer"
+      redirect_to action: 'new'
+    end
     @cforms = Cform.all
   end
 
   # GET /cforms/1
   # GET /cforms/1.json
   def show
+    @user = current_user
+    if @user[:role] == "viewer"
+      redirect_to action: 'new'
+    end
   end
 
   # GET /cforms/new
