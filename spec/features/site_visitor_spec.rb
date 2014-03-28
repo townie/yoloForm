@@ -5,19 +5,20 @@ require 'spec_helper'
 
 describe 'site visitor' do
 
-  context 'forms are correct' do
-    before(:each) do
+  before(:each) do
       visit('/')
       click_on "Sign up"
-      user = (0..10).map {('a'..'z').to_a[rand(5)]}.join
+      user = ('a'..'z').to_a.shuffle.pop(20).join
       fill_in "Email", with: "#{user}@shlomo.com"
-      save_and_open_page
-      fill_in "Password", with: "qwerty"
-      click_on "Sign in"
-      save_and_open_page
-    end
+      fill_in "Password", with: "adminqwerty"
+      fill_in "Password confirmation", with: "adminqwerty"
+      click_on "Sign up"
+  end
+
+  context 'forms are correct' do
 
     it 'has an email section' do
+      save_and_open_page
       expect(page).to have_css('input#cform_email')
     end
 
@@ -39,9 +40,9 @@ describe 'site visitor' do
   end
 
   context 'site visitor actions' do
-    before(:each) do
-      visit('/cforms/new')
-    end
+    # before(:each) do
+    #   visit('/cforms/new')
+    # end
 
     it 'requires a user to have a first name' do
       fill_in "Email", with: "mofo@gmail.com"
